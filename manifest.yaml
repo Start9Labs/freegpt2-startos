@@ -1,0 +1,101 @@
+
+id: ollama 
+title: "Ollama"
+version: 0.1.24
+release-notes: "Initial release of Ollama for StartOS"
+license: MIT
+wrapper-repo: "https://github.com/k0gen/ollama-startos"
+upstream-repo: "https://github.com/ollama/ollama"
+support-site: "https://github.com/ollama/ollama/issues"
+marketing-site: "https://ollama.com/"
+build: ["make"]
+description:
+  short: Ollama is a tool for running large language models locally.
+  long: |
+    Ollama simplifies local language model usage. Get you up and running with Llama 2, Mistral, and other large language models in an self sovereign fashion.
+assets:
+  license: LICENSE
+  icon: icon.png
+  instructions: instructions.md
+main:
+  type: docker
+  image: main
+  entrypoint: "docker_entrypoint.sh"
+  args: []
+  mounts:
+    main: /app/backend/data
+    ollama: /root/.ollama
+    cert: /mnt/cert
+  gpu-acceleration: true
+hardware-requirements:
+  arch:
+    - x86_64
+    - aarch64
+health-checks:
+  web-ui:
+    name: Web UI
+    success-message: Ollama is ready
+    type: script
+config: ~
+properties: ~
+volumes:
+  main:
+    type: data
+  ollama:
+    type: data
+  cert:
+    type: certificate
+    interface-id: main
+interfaces:
+  main:
+    name: User Interface
+    description: Main user interface for interacting with Ollama in a web browser.
+    tor-config:
+      port-mapping:
+        80: "8080"
+        # 443: "3443"
+    lan-config:
+      443:
+        ssl: true
+        internal: 8080
+    ui: true
+    protocols:
+      - tcp
+      - http
+dependencies: {}
+backup:
+  create:
+    type: docker
+    image: compat
+    system: true 
+    entrypoint: compat 
+    args:
+      - duplicity
+      - create
+      - /mnt/backup
+      - /app/backend/data
+    mounts:
+      BACKUP: "/mnt/backup" 
+      main: "/app/backend/data"
+  restore:
+    type: docker
+    image: compat
+    system: true
+    entrypoint: compat
+    args:
+      - duplicity
+      - restore
+      - /mnt/backup
+      - /app/backend/data
+    mounts:
+      BACKUP: "/mnt/backup"
+      main: "/app/backend/data"
+migrations:
+  from:
+    "*":
+      type: script
+      args: ["from"]
+  to:
+    "*":
+      type: script
+      args: ["to"]
