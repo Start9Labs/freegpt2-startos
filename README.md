@@ -4,7 +4,7 @@
 
 # Ollama for StartOS
 
-[Ollama](https://github.com/OllamaHQ/ollama-web-app) is a fast, efficient, and user-friendly Nostr client that leverages server-side caching to deliver a smooth and responsive user experience. Its clean interface and insightful features make it a valuable tool for any Nostr user. This repository creates the `s9pk` package that is installed to run `Ollama` on [StartOS](https://github.com/Start9Labs/start-os/).
+[Ollama](https://github.com/ollama/ollama) Ollama is a powerful tool designed for running large language models locally. It leverages the [Ollama Web UI](https://github.com/ollama-webui/ollama-webui) as its user interface, providing a clean and intuitive experience. The insightful features of this interface make it an invaluable tool for working with locally hosted language models. This repository creates the `s9pk` package that is installed to run `Ollama` on [StartOS](https://github.com/Start9Labs/start-os/).
 
 ## Dependencies
 
