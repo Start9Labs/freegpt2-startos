@@ -1,8 +1,13 @@
 
 id: ollama 
 title: "Ollama"
-version: 0.1.24
-release-notes: "Initial release of Ollama for StartOS"
+version: 0.1.27
+release-notes: |
+  - Added support and performance improvements (up to 2x) when running Gemma models
+  - Support for bert and nomic-bert embedding models
+  - Fixed an issue where requests would hang after being repeated several times
+  - Ollama will now correctly error when provided an unsupported image format
+  - Hardened AMD driver lookup logic
 license: MIT
 wrapper-repo: "https://github.com/k0gen/ollama-startos"
 upstream-repo: "https://github.com/ollama/ollama"
