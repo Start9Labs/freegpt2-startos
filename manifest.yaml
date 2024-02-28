@@ -1,6 +1,6 @@
 
 id: freegpt2 
-title: "FreeGPT 2"
+title: "FreeGPT-2"
 version: 2.27.106
 release-notes: |
   - Updated UI to use latest version of Open WebUI (Formerly Ollama WebUI)

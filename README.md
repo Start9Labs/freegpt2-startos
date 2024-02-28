@@ -2,13 +2,13 @@
   <img src="icon.png" alt="Project Logo" width="21%">
 </p>
 
-# Ollama for StartOS
+# FreeGPT-2 for StartOS
 
-[Ollama](https://github.com/ollama/ollama) is a powerful tool designed for running large language models locally. It leverages the [Ollama Web UI](https://github.com/ollama-webui/ollama-webui) as its user interface, providing a clean and intuitive experience. The insightful features of this interface make it an invaluable tool for working with locally hosted language models. This repository creates the `s9pk` package that is installed to run `Ollama` on [StartOS](https://github.com/Start9Labs/start-os/).
+FreeGPT-2 is born from the merger of two powerful software: [Ollama](https://github.com/ollama/ollama) and [Open Web UI](https://github.com/open-webui/open-webui). Ollama, known for running large language models locally in CLI, is paired with the user-friendly interface of Open WebUI. This combination provides a clean and intuitive experience, making it an invaluable tool for working with locally hosted language models in a sovereign fashion. This repository creates the `s9pk` package that is installed to run FreeGPT-2 on [StartOS](https://github.com/Start9Labs/start-os/). We gratefully acknowledge the use of code from both Ollama and Open WebUI, which has made the creation of FreeGPT-2 possible.
 
 ## Dependencies
 
-Prior to building the `ollama` package, it's essential to configure your build environment for StartOS services. You can find instructions on how to set up the appropriate build environment in the [Developer Docs](https://docs.start9.com/latest/developer-docs/packaging).
+Prior to building the `freegpt2` package, it's essential to configure your build environment for StartOS services. You can find instructions on how to set up the appropriate build environment in the [Developer Docs](https://docs.start9.com/latest/developer-docs/packaging).
 
 - [docker](https://docs.docker.com/get-docker)
 - [docker-buildx](https://docs.docker.com/buildx/working-with-buildx/)
@@ -22,8 +22,8 @@ Prior to building the `ollama` package, it's essential to configure your build e
 Clone the Ollama package repository locally.
 
 ```
-git clone https://github.com/k0gen/ollama-startos.git
-cd ollama-startos
+git clone https://github.com/Start9Labs/freegpt2-startos.git
+cd freegpt2-startos
 ```
 
 ## Building
@@ -58,7 +58,7 @@ start-cli auth login
 make install
 ```
 
-**Tip:** You can also install the `ollama.s9pk` by sideloading it under the **StartOS > System > Sideload a Service** section.
+**Tip:** You can also install the `freegpt2.s9pk` by sideloading it under the **StartOS > System > Sideload a Service** section.
 
 ## Verify Install
 

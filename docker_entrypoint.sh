@@ -1,6 +1,6 @@
 #!/bin/sh
 
-printf "\n\n [i] Starting Ollama ...\n\n"
+printf "\n\n [i] Starting FreeGPT-2 ...\n\n"
 
 _term() {
   echo "Caught SIGTERM signal!"

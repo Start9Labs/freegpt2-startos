@@ -1,6 +1,6 @@
-# Instructions for Ollama
+# Instructions for FreeGPT-2
 
-1. Click **Launch UI** to access your personal Ollama website.
+1. Click **Launch UI** to access your personal FreeGPT-2 website.
 2. Sign up by creating a user account.
 3. Navigate to Settings > Models. Here, you will find an entry box titled "Pull a model from Ollama.com". In this box, you can type the tag of the model you want to use.
 4. After entering the model tag (e.g., `tinyllama`), click the download button on the right. The software will automatically download the model.
