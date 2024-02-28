@@ -1,4 +1,4 @@
-id: freegpt2
+id: free-gpt
 title: "FreeGPT-2"
 version: 2.27.106
 release-notes: |
@@ -11,9 +11,9 @@ support-site: "https://github.com/Start9Labs/freegpt2/issues"
 marketing-site: "https://start9.com/"
 build: ["make"]
 description:
-  short: FreeGPT 2 is a tool for running large language models locally.
+  short: FreeGPT-2 is a tool for running large language models locally.
   long: |
-    FreeGPT 2 simplifies local language model usage. Get you up and running with Llama 2, Mistral, Llava and other large language models in an self sovereign fashion.
+    FreeGPT-2 simplifies local language model usage. Get you up and running with Llama 2, Mistral, Llava and other large language models in an self sovereign fashion.
 assets:
   license: LICENSE
   icon: icon.png
@@ -25,7 +25,7 @@ main:
   args: []
   mounts:
     main: /app/backend/data
-    freegpt2: /root/.ollama
+    free-gpt: /root/.ollama
     cert: /mnt/cert
   gpu-acceleration: true
 hardware-requirements:
@@ -35,14 +35,14 @@ hardware-requirements:
 health-checks:
   web-ui:
     name: Web UI
-    success-message: FreeGPT 2 is ready
+    success-message: FreeGPT-2 is ready
     type: script
 config: ~
 properties: ~
 volumes:
   main:
     type: data
-  freegpt2:
+  free-gpt:
     type: data
   cert:
     type: certificate
@@ -50,7 +50,7 @@ volumes:
 interfaces:
   main:
     name: User Interface
-    description: Main user interface for interacting with FreeGPT 2 in a web browser.
+    description: Main user interface for interacting with FreeGPT-2 in a web browser.
     tor-config:
       port-mapping:
         80: "8080"
