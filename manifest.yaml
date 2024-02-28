@@ -1,20 +1,20 @@
 
-id: ollama 
-title: "Ollama"
-version: 0.1.27.1
+id: freegpt2 
+title: "FreeGPT 2"
+version: 2.27.106
 release-notes: |
   - Updated UI to use latest version of Open WebUI (Formerly Ollama WebUI)
   - Instructions updated to reflect new UI
 license: MIT
-wrapper-repo: "https://github.com/k0gen/ollama-startos"
-upstream-repo: "https://github.com/ollama/ollama"
-support-site: "https://github.com/ollama/ollama/issues"
-marketing-site: "https://ollama.com/"
+wrapper-repo: "https://github.com/Start9Labs/freegpt2"
+upstream-repo: "https://github.com/Start9Labs/freegpt2"
+support-site: "https://github.com/Start9Labs/freegpt2/issues"
+marketing-site: "https://start9.com/"
 build: ["make"]
 description:
-  short: Ollama is a tool for running large language models locally.
+  short: FreeGPT 2 is a tool for running large language models locally.
   long: |
-    Ollama simplifies local language model usage. Get you up and running with Llama 2, Mistral, and other large language models in an self sovereign fashion.
+    FreeGPT 2 simplifies local language model usage. Get you up and running with Llama 2, Mistral, Llava and other large language models in an self sovereign fashion.
 assets:
   license: LICENSE
   icon: icon.png
@@ -36,7 +36,7 @@ hardware-requirements:
 health-checks:
   web-ui:
     name: Web UI
-    success-message: Ollama is ready
+    success-message: FreeGPT 2 is ready
     type: script
 config: ~
 properties: ~
@@ -51,7 +51,7 @@ volumes:
 interfaces:
   main:
     name: User Interface
-    description: Main user interface for interacting with Ollama in a web browser.
+    description: Main user interface for interacting with FreeGPT 2 in a web browser.
     tor-config:
       port-mapping:
         80: "8080"
