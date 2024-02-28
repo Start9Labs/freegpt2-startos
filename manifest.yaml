@@ -1,5 +1,4 @@
-
-id: freegpt2 
+id: freegpt2
 title: "FreeGPT-2"
 version: 2.27.106
 release-notes: |
@@ -26,7 +25,7 @@ main:
   args: []
   mounts:
     main: /app/backend/data
-    ollama: /root/.ollama
+    freegpt2: /root/.ollama
     cert: /mnt/cert
   gpu-acceleration: true
 hardware-requirements:
@@ -43,7 +42,7 @@ properties: ~
 volumes:
   main:
     type: data
-  ollama:
+  freegpt2:
     type: data
   cert:
     type: certificate
@@ -69,15 +68,15 @@ backup:
   create:
     type: docker
     image: compat
-    system: true 
-    entrypoint: compat 
+    system: true
+    entrypoint: compat
     args:
       - duplicity
       - create
       - /mnt/backup
       - /app/backend/data
     mounts:
-      BACKUP: "/mnt/backup" 
+      BACKUP: "/mnt/backup"
       main: "/app/backend/data"
   restore:
     type: docker
