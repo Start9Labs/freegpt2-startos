@@ -19,7 +19,7 @@ Prior to building the `free-gpt` package, it's essential to configure your build
 
 ## Cloning
 
-Clone the Ollama package repository locally.
+Clone the FreeGPT-2 package repository locally.
 
 ```
 git clone https://github.com/Start9Labs/freegpt2-startos.git
@@ -28,7 +28,7 @@ cd freegpt2-startos
 
 ## Building
 
-To build the **Ollama** service as a universal package, run the following command:
+To build the **FreeGPT-2** service as a universal package, run the following command:
 
 ```
 make
@@ -62,6 +62,6 @@ make install
 
 ## Verify Install
 
-Go to your StartOS Services page, select **Ollama** and start the service.
+Go to your StartOS Services page, select **FreeGPT-2** and start the service.
 
 **Done!**
