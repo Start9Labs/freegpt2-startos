@@ -8,7 +8,7 @@ FreeGPT-2 is born from the merger of two powerful software: [Ollama](https://git
 
 ## Dependencies
 
-Prior to building the `freegpt2` package, it's essential to configure your build environment for StartOS services. You can find instructions on how to set up the appropriate build environment in the [Developer Docs](https://docs.start9.com/latest/developer-docs/packaging).
+Prior to building the `free-gpt` package, it's essential to configure your build environment for StartOS services. You can find instructions on how to set up the appropriate build environment in the [Developer Docs](https://docs.start9.com/latest/developer-docs/packaging).
 
 - [docker](https://docs.docker.com/get-docker)
 - [docker-buildx](https://docs.docker.com/buildx/working-with-buildx/)
@@ -58,7 +58,7 @@ start-cli auth login
 make install
 ```
 
-**Tip:** You can also install the `freegpt2.s9pk` by sideloading it under the **StartOS > System > Sideload a Service** section.
+**Tip:** You can also install the `free-gpt.s9pk` by sideloading it under the **StartOS > System > Sideload a Service** section.
 
 ## Verify Install
 
