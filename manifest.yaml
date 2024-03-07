@@ -35,8 +35,15 @@ hardware-requirements:
 health-checks:
   web-ui:
     name: Web UI
-    success-message: FreeGPT-2 is ready
-    type: script
+    success-message: FreeGPT-2 is ready to be visited in a web browser.
+    type: docker
+    image: main
+    system: false
+    entrypoint: check-ui.sh
+    args: []
+    mounts: {}
+    io-format: yaml
+    inject: true
 config: ~
 properties: ~
 volumes:
