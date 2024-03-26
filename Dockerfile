@@ -1,5 +1,5 @@
-FROM ghcr.io/open-webui/open-webui:git-5745b9c as gui
-FROM ollama/ollama:0.1.27 as ollama
+FROM ghcr.io/open-webui/open-webui:git-ac294a7 as gui
+FROM ollama/ollama:0.1.29 as ollama
 
 COPY --from=gui /app /app
 COPY --from=gui /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx

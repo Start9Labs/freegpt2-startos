@@ -1,9 +1,12 @@
 id: free-gpt
 title: "FreeGPT-2"
-version: 2.27.106
+version: 2.29.115
 release-notes: |
-  - Updated UI to use latest version of Open WebUI (Formerly Ollama WebUI)
-  - Instructions updated to reflect new UI
+  - Ollama update to the latest version
+  - Updated UI to use latest version of Open WebUI
+  - Upload a custom GGUF model (Experimental)
+  - Vision models such as llava should now respond better to text prompts
+  - Improved support for llava 1.6 models 
 license: MIT
 wrapper-repo: "https://github.com/Start9Labs/freegpt2"
 upstream-repo: "https://github.com/Start9Labs/freegpt2"
