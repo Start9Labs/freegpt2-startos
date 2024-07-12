@@ -7,7 +7,7 @@ COPY --from=gui /app /app
 WORKDIR /app/backend
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3.11 python3-pip pandoc netcat-openbsd curl && \
+    apt-get install -y --no-install-recommends python3.11 python3-pip pandoc netcat-openbsd curl ffmpeg libsm6 libxext6 && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2 && \
     chown root:root -R /root/.cache/chroma && \
