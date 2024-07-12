@@ -1,5 +1,5 @@
-FROM ghcr.io/open-webui/open-webui:git-824966a as gui
-FROM ollama/ollama:0.1.48 as ollama
+FROM ghcr.io/open-webui/open-webui:0.3.8 as gui
+FROM ollama/ollama:0.2.2 as ollama
 
 COPY --from=gui /app /app
 # COPY --from=gui /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx
@@ -18,8 +18,10 @@ RUN apt-get update && \
 
 ADD ./docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 RUN chmod a+x /usr/local/bin/docker_entrypoint.sh
-COPY icon.png /app/build/favicon.png
-COPY icon.png /app/build/logo.svg
+COPY icon.png /app/build/static/favicon.png
+COPY icon.png /app/build/static/splash.png
+COPY icon.png /app/build/static/splash-dark.png
+
 RUN sed -i 's/WEBUI_NAME != "Open WebUI"/WEBUI_NAME != "FreeGPT-2"/g' /app/backend/config.py
 RUN sed -i 's#WEBUI_FAVICON_URL = "https://openwebui.com/favicon.png"#WEBUI_FAVICON_URL = "/static/favicon.png"#g' /app/backend/config.py
 RUN sed -i 's/flex w-full justify-between items-center/flex w-full justify-between items-center hidden/g' /app/build/_app/immutable/nodes/2.*.js
