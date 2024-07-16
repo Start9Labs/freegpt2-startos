@@ -1,13 +1,13 @@
 id: free-gpt
 title: "FreeGPT-2"
-version: 2.37.124
+version: 2.202.038
 release-notes: |
   - Ollama update to the latest version
   - Updated UI to use latest version of Open WebUI
-  - Added support for llama3 and many llama3 based models
-  - Additional UI Language Support including Polish and Turkish
-  - Improved Admin Panel
-  - And many more ...
+  - Added support for GLM-4, CodeGeeX4 and Gemma 2 models.
+  - 🎙️ Hands-Free Voice Call Feature: Initiate voice calls without needing to use your hands, making interactions more seamless.
+  - 🎛️ Enhanced UI for Voice Recording: Improved user interface for the voice recording feature, making it more intuitive and user-friendly.
+  - And many, many more ...
 license: MIT
 wrapper-repo: "https://github.com/Start9Labs/freegpt2-startos"
 upstream-repo: "https://github.com/Start9Labs/freegpt2-startos"
