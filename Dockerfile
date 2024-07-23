@@ -1,5 +1,5 @@
-FROM ghcr.io/open-webui/open-webui:0.3.8 as gui
-FROM ollama/ollama:0.2.2 as ollama
+FROM ghcr.io/open-webui/open-webui:0.3.10 AS gui
+FROM ollama/ollama:0.2.8 AS ollama
 
 COPY --from=gui /app /app
 # COPY --from=gui /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx
@@ -29,11 +29,11 @@ ADD ./scripts/check-ui.sh /usr/local/bin/check-ui.sh
 RUN chmod a+x /usr/local/bin/check-ui.sh
 
 ENV ENV=prod
-ENV OPENAI_API_BASE_URL ""
-ENV OPENAI_API_KEY ""
+ENV OPENAI_API_BASE_URL=""
+ENV OPENAI_API_KEY=""
 ENV WEBUI_NAME="FreeGPT-2"
-ENV WEBUI_SECRET_KEY ""
-ENV SCARF_NO_ANALYTICS true
-ENV DO_NOT_TRACK true
+ENV WEBUI_SECRET_KEY=""
+ENV SCARF_NO_ANALYTICS=true
+ENV DO_NOT_TRACK=true
 ENV RAG_EMBEDDING_MODEL="all-MiniLM-L6-v2"
 ENV RAG_EMBEDDING_MODEL_DEVICE_TYPE="cpu"
