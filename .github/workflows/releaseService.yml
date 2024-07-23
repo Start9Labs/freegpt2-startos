@@ -55,9 +55,6 @@ jobs:
           name: ${{ env.package_title }} ${{ github.ref_name }}
           prerelease: true
           body_path: change-log.txt
-          files: |
-            ./${{ env.package_id }}.s9pk
-            ./${{ env.package_id }}.s9pk.sha256
 
       - name: Publish to Registry
         env:
