@@ -4,10 +4,7 @@ version: 2.312.0332
 release-notes: |
   - Ollama update to the latest version
   - Updated UI to use latest version of Open WebUI
-  - Added support for NuExtract, Mathstral, GLM-4, CodeGeeX4 and Gemma 2 models.
-  - 🎙️ Hands-Free Voice Call Feature: Initiate voice calls without needing to use your hands, making interactions more seamless.
-  - 🎛️ Enhanced UI for Voice Recording: Improved user interface for the voice recording feature, making it more intuitive and user-friendly.
-  - And many, many more ...
+  - Update bundling process to use Deno emit module
 license: MIT
 wrapper-repo: "https://github.com/Start9Labs/freegpt2-startos"
 upstream-repo: "https://github.com/Start9Labs/freegpt2-startos"
