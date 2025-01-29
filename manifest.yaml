@@ -1,6 +1,6 @@
 id: free-gpt
 title: "FreeGPT-2"
-version: 2.312.0332
+version: 2.507.0507
 release-notes: |
   - Ollama update to the latest version
   - Updated UI to use latest version of Open WebUI
@@ -14,7 +14,7 @@ build: ["make"]
 description:
   short: FreeGPT-2 is a tool for running large language models locally.
   long: |
-    FreeGPT-2 simplifies local language model usage. Get you up and running with Llama 2, Mistral, Llava and other large language models in an self sovereign fashion.
+    FreeGPT-2 combines the power of Ollama for running large language models locally with the user-friendly interface of Open WebUI. This combination provides a clean and intuitive experience for working with locally hosted language models in a sovereign fashion.
 assets:
   license: LICENSE
   icon: icon.png
