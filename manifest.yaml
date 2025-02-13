@@ -1,10 +1,10 @@
 id: free-gpt
 title: "FreeGPT-2"
-version: 2.507.0507
+version: 2.507.0510
 release-notes: |
   - Ollama update to the latest version
   - Updated UI to use latest version of Open WebUI
-  - Update bundling process to use Deno emit module
+  - Fixed a bug where the 'thinking' tag was disrupting content rendering
 license: MIT
 wrapper-repo: "https://github.com/Start9Labs/freegpt2-startos"
 upstream-repo: "https://github.com/Start9Labs/freegpt2-startos"
