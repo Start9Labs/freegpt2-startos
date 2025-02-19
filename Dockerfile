@@ -1,4 +1,4 @@
-FROM ghcr.io/open-webui/open-webui:0.5.10-ollama
+FROM ghcr.io/open-webui/open-webui:0.5.14-ollama
 
 ADD ./docker_entrypoint.sh /usr/local/bin/docker_entrypoint.sh
 RUN chmod a+x /usr/local/bin/docker_entrypoint.sh
