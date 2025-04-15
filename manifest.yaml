@@ -1,9 +1,9 @@
 id: free-gpt
 title: "FreeGPT-2"
-version: 2.511.0514
+version: 2.650.0650
 release-notes: |
-  - Ollama update to the latest version - ([changelog](https://github.com/ollama/ollama/releases/tag/v0.5.11))
-  - Updated UI to use latest version of Open WebUI - ([changelog](https://github.com/open-webui/open-webui/releases/tag/v0.5.14))
+  - Ollama update to the latest version - ([changelog](https://github.com/ollama/ollama/releases/tag/v0.6.5))
+  - Updated UI to use latest version of Open WebUI - ([changelog](https://github.com/open-webui/open-webui/releases/tag/v0.6.5))
 license: MIT
 wrapper-repo: "https://github.com/Start9Labs/freegpt2-startos"
 upstream-repo: "https://github.com/Start9Labs/freegpt2-startos"
