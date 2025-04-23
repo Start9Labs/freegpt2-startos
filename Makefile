@@ -1,63 +1,49 @@
-PKG_ID := $(shell yq e ".id" manifest.yaml)
-PKG_VERSION := $(shell yq e ".version" manifest.yaml)
-TS_FILES := $(shell find ./ -name \*.ts)
+PACKAGE_ID := $(shell grep -o "id: '[^']*'" startos/manifest.ts | sed "s/id: '\([^']*\)'/\1/")
+INGREDIENTS := $(shell start-cli s9pk list-ingredients 2> /dev/null)
 
-# delete the target of a rule if it has changed and its recipe exits with a nonzero exit status
-.DELETE_ON_ERROR:
+.PHONY: all clean install check-deps check-init ingredients
 
-all: verify
-
-verify: $(PKG_ID).s9pk
-	@start-sdk verify s9pk $(PKG_ID).s9pk
+all: ${PACKAGE_ID}.s9pk
 	@echo " Done!"
-	@echo "   Filesize: $(shell du -h $(PKG_ID).s9pk) is ready"
+	@echo " Filesize:$(shell du -h $(PACKAGE_ID).s9pk) is ready"
 
-install:
-	@if [ ! -f ~/.embassy/config.yaml ]; then echo "You must define \"host: http://server-name.local\" in ~/.embassy/config.yaml config file first."; exit 1; fi
-	@echo "\nInstalling to $$(grep -v '^#' ~/.embassy/config.yaml | cut -d'/' -f3) ...\n"
-	@[ -f $(PKG_ID).s9pk ] || ( $(MAKE) && echo "\nInstalling to $$(grep -v '^#' ~/.embassy/config.yaml | cut -d'/' -f3) ...\n" )
-	@start-cli package install $(PKG_ID).s9pk
+check-deps:
+	@if ! command -v start-cli > /dev/null; then \
+		echo "Error: start-cli not found. Please install it first."; \
+		exit 1; \
+	fi
+
+check-init:
+	@if [ ! -f ~/.startos/developer.key.pem ]; then \
+		start-cli init; \
+	fi
+
+ingredients: $(INGREDIENTS)
+	@echo "Re-evaluating ingredients..."
+
+${PACKAGE_ID}.s9pk: $(INGREDIENTS) | check-deps check-init
+	@$(MAKE) --no-print-directory ingredients
+	start-cli s9pk pack
+
+javascript/index.js: $(shell git ls-files startos) tsconfig.json node_modules package.json
+	npm run build
+
+assets:
+	mkdir -p assets
+
+node_modules: package-lock.json
+	npm ci
+
+package-lock.json: package.json
+	npm i
 
 clean:
-	rm -rf docker-images
-	rm -f $(PKG_ID).s9pk
-	rm -f scripts/*.js
+	rm -rf ${PACKAGE_ID}.s9pk
+	rm -rf javascript
+	rm -rf node_modules
 
-clean-manifest:
-	@sed -i '' '/^[[:blank:]]*#/d' manifest.yaml
-	@echo; echo "Comments successfully removed from manifest.yaml file."; echo
-
-scripts/embassy.js: $(TS_FILES)
-	deno run --allow-read --allow-write --allow-env --allow-net scripts/bundle.ts
-
-arm:
-	@rm -f docker-images/x86_64.tar
-	ARCH=aarch64 $(MAKE)
-
-x86:
-	@rm -f docker-images/aarch64.tar
-	ARCH=x86_64 $(MAKE)
-
-docker-images/aarch64.tar: Dockerfile docker_entrypoint.sh
-ifeq ($(ARCH),x86_64)
-else
-	mkdir -p docker-images
-	docker buildx build --tag start9/$(PKG_ID)/main:$(PKG_VERSION) --platform=linux/arm64 -o type=docker,dest=docker-images/aarch64.tar .
-endif
-
-docker-images/x86_64.tar: Dockerfile docker_entrypoint.sh
-ifeq ($(ARCH),aarch64)
-else
-	mkdir -p docker-images
-	docker buildx build --tag start9/$(PKG_ID)/main:$(PKG_VERSION) --platform=linux/amd64 -o type=docker,dest=docker-images/x86_64.tar .
-endif
-
-$(PKG_ID).s9pk: manifest.yaml instructions.md icon.png LICENSE scripts/embassy.js docker-images/aarch64.tar docker-images/x86_64.tar
-ifeq ($(ARCH),aarch64)
-	@echo "start-sdk: Preparing aarch64 package ..."
-else ifeq ($(ARCH),x86_64)
-	@echo "start-sdk: Preparing x86_64 package ..."
-else
-	@echo "start-sdk: Preparing Universal Package ..."
-endif
-	@start-sdk pack
+install: | check-deps check-init
+	@if [ ! -f ~/.startos/config.yaml ]; then echo "You must define \"host: http://server-name.local\" in ~/.startos/config.yaml config file first."; exit 1; fi
+	@echo "\nInstalling to $$(grep -v '^#' ~/.startos/config.yaml | cut -d'/' -f3) ...\n"
+	@[ -f $(PACKAGE_ID).s9pk ] || ( $(MAKE) && echo "\nInstalling to $$(grep -v '^#' ~/.startos/config.yaml | cut -d'/' -f3) ...\n" )
+	@start-cli package install -s $(PACKAGE_ID).s9pk
