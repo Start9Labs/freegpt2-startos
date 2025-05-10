@@ -12,10 +12,25 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
     effects,
     { imageId: 'ollama' },
     sdk.Mounts.of()
-      .addVolume('main', null, '/app/backend/data', false)
-      .addVolume('ollama', null, '/root', false)
+      .mountVolume({
+        volumeId: 'main',
+        subpath: null,
+        mountpoint: '/app/backend/data',
+        readonly: false,
+      })
+      .mountVolume({
+        volumeId: 'ollama',
+        subpath: null,
+        mountpoint: '/root',
+        readonly: false,
+      })
       // @TODO do we need this cert volume?
-      .addVolume('cert', null, '/mnt/cert', false),
+      .mountVolume({
+        volumeId: 'cert',
+        subpath: null,
+        mountpoint: '/mnt/cert',
+        readonly: false,
+      }),
     'ollama-sub',
   )
 
