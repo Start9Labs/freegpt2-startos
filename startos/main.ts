@@ -45,7 +45,7 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
   return sdk.Daemons.of(effects, started, additionalChecks)
     .addDaemon('ollama', {
       subcontainer: ollamaSub,
-      command: ['ollama', 'serve'],
+      exec: { command: ['ollama', 'serve'] },
       ready: {
         display: null,
         // @TODO should these be one daemon? Or what is the health check here if not pinging the uiPort?
@@ -58,7 +58,7 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
     })
     .addDaemon('openwebui', {
       subcontainer: ollamaSub,
-      command: ['exec', '/app/backend/start.sh'],
+      exec: { command: ['exec', '/app/backend/start.sh'] },
       ready: {
         display: 'Web Interface',
         fn: () =>
