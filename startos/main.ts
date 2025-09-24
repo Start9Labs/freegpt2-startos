@@ -1,5 +1,4 @@
 import { sdk } from './sdk'
-import { T } from '@start9labs/start-sdk'
 import { uiPort } from './utils'
 
 export const main = sdk.setupMain(async ({ effects, started }) => {
@@ -35,14 +34,9 @@ export const main = sdk.setupMain(async ({ effects, started }) => {
   )
 
   /**
-   * ======================== Additional Health Checks (optional) ========================
-   */
-  const additionalChecks: T.HealthCheck[] = []
-
-  /**
    * ======================== Daemons ========================
    */
-  return sdk.Daemons.of(effects, started, additionalChecks)
+  return sdk.Daemons.of(effects, started)
     .addDaemon('ollama', {
       subcontainer: ollamaSub,
       exec: { command: ['ollama', 'serve'] },
