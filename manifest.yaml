@@ -1,9 +1,13 @@
 id: free-gpt
 title: "FreeGPT-2"
-version: 2.650.0650
+version: 2.01110.0630
 release-notes: |
-  - Ollama update to the latest version - ([changelog](https://github.com/ollama/ollama/releases/tag/v0.6.5))
-  - Updated UI to use latest version of Open WebUI - ([changelog](https://github.com/open-webui/open-webui/releases/tag/v0.6.5))
+  - **Latest Models**: Updated to Ollama 0.11.10 with support for OpenAI's open-weight models (gpt-oss) designed for powerful reasoning, agentic tasks, and versatile developer use cases.
+  - **Better Performance**: Improved memory management and faster model loading times, especially beneficial on systems with sufficient RAM.
+  - **Enhanced Chat Interface**: Completely redesigned chat input with better file attachments, rich text editing, and improved conversation management.
+  - **Improved Stability**: Better OpenAI API compatibility and various bug fixes for more reliable operation.
+  - Ollama - ([changelog](https://github.com/ollama/ollama/releases/tag/v0.11.10))
+  - Open WebUI - ([changelog](https://github.com/open-webui/open-webui/releases/tag/v0.6.30))
 license: MIT
 wrapper-repo: "https://github.com/Start9Labs/freegpt2-startos"
 upstream-repo: "https://github.com/Start9Labs/freegpt2-startos"
